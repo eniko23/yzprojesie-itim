@@ -1,7 +1,6 @@
 import csv
 import random
 
-# Cümle şablonları ve kelime havuzları
 templates = {
     "IT": [
         "{personel} bugün {action} ile ilgili bir sorun çözdü.",
@@ -25,7 +24,6 @@ templates = {
     ]
 }
 
-# Kelime havuzları
 words = {
     "personel": ["Ahmet", "Ayşe", "Mehmet", "Elif", "Kemal"],
     "action": ["bakım", "güncelleme", "onarım"],
@@ -43,11 +41,9 @@ words = {
     "process": ["üretim", "dağıtım"]
 }
 
-# Rastgele cümle oluşturucu
 def generate_sentence(template, words):
     return template.format(**{key: random.choice(values) for key, values in words.items() if f"{{{key}}}" in template})
 
-# Veri seti oluşturma
 unique_sentences = set()
 for category, templates_list in templates.items():
     while len(unique_sentences) < 12500 * len(templates):
@@ -55,7 +51,6 @@ for category, templates_list in templates.items():
             sentence = generate_sentence(template, words)
             unique_sentences.add((category, sentence))
 
-# CSV'ye kaydetme
 csv_file_path = "factory_unique_sentences.csv"
 with open(csv_file_path, mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
