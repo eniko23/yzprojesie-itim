@@ -3,7 +3,7 @@ from datasets import Dataset
 import pandas as pd
 import torch
 
-def main():
+def main(): #egitim
     print("CUDA is available:", torch.cuda.is_available())
 
     df = pd.read_csv("genisletilmis_mesaj_veriseti_50k.csv")
